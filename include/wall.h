@@ -4,7 +4,10 @@
 #include <block.h>
 
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+
 #include <iostream>
+
 #include <databank.h>
 
 class wall : public block
@@ -12,8 +15,9 @@ class wall : public block
     public:
         wall();
         ~wall();
-
     protected:
+
+
 
     private:
 };

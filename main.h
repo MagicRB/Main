@@ -20,6 +20,7 @@ extern "C"
 {
 #endif
 
+void DLL_EXPORT loadObjects(databank* db, std::vector<std::string> ObjV);
 void DLL_EXPORT initMod(databank* db);
 
 #ifdef __cplusplus

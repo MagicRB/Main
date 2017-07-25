@@ -8,6 +8,7 @@
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/Main" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./bin/Debug/" />
 				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="mingw_compiler" />
@@ -21,13 +22,18 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
+					<Add option="F:\Projects\C++\GAME\obj\Debug\src\databank.o" />
 					<Add library="user32" />
-					<Add library="../GAME/obj/Debug/databank.o" />
-					<Add library="../GAME/obj/Debug/block.o" />
+					<Add library="F:/Projects/C++/GAME/obj/Debug/src/block.o" />
 				</Linker>
+				<ExtraCommands>
+					<Add after="post-build.bat" />
+					<Mode after="always" />
+				</ExtraCommands>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/Main" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./bin/Release/" />
 				<Option object_output="obj/Release/" />
 				<Option type="3" />
 				<Option compiler="mingw_compiler" />
@@ -45,9 +51,13 @@
 				</Linker>
 			</Target>
 		</Build>
+		<Unit filename="include/mainControls.h" />
+		<Unit filename="include/player.h" />
 		<Unit filename="include/wall.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
+		<Unit filename="src/mainControls.cpp" />
+		<Unit filename="src/player.cpp" />
 		<Unit filename="src/wall.cpp" />
 		<Extensions>
 			<code_completion />

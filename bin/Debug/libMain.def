@@ -1,3 +1,4 @@
 EXPORTS
     DllMain @1
     initMod @2
+    loadObjects @3
