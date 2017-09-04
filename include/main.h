@@ -1,7 +1,9 @@
 #ifndef __MAIN_H__
 #define __MAIN_H__
 
+#ifdef _WIN32
 #include <windows.h>
+
 #include <databank.h>
 
 /*  To use this exported function of dll, include this header
@@ -27,4 +29,21 @@ void DLL_EXPORT initMod(databank* db);
 }
 #endif
 
+#else
+
+#include <databank.h>
+
+
+extern "C"
+{
+
+extern void loadObjects(databank* db, std::vector<std::string> ObjV);
+extern void initMod(databank* db);
+
+}
+
+
+#endif // _WIN32
+
 #endif // __MAIN_H__
+

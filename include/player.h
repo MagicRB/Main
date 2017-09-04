@@ -8,10 +8,14 @@ class player
     public:
         player();
 
-        void init(databank*);
+        int init(databank*);
+        int render(databank*);
 
         ~player();
     protected:
+
+        SDL_Texture* texture = NULL;
+        SDL_Rect rect;
 
     private:
 };

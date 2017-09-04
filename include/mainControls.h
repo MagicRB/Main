@@ -14,7 +14,7 @@ class mainControls
         mainControls();
         ~mainControls();
 
-        bool checkColl(databank* db, int dx, int dy);
+        bool checkColl(databank* db, float dx, float dy);
 
         void eventHandle(databank* db);
 

@@ -1,1 +1,0 @@
-xcopy /s/y F:\Projects\C++\Main\bin\Debug\Main.dll F:\Projects\C++\GAME\bin\Debug\mods\Main.dll

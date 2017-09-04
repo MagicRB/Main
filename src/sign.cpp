@@ -1,16 +1,16 @@
-#include "wall.h"
+#include "sign.h"
 
 #include <functional>
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-wall::wall()
+sign::sign()
 {
     //ctor
 }
 
-int wall::render(databank* db)
+int sign::render(databank* db)
 {
     rect.x = db->getResX() / 2 + x * db->getCHX() - db->getCX() - db->getCHX() / 2;
     rect.y = db->getResY() / 2 + y * db->getCHY() - db->getCY() - db->getCHY() / 2;
@@ -22,35 +22,35 @@ int wall::render(databank* db)
     return 0;
 }
 
-int wall::init(databank* db)
+int sign::init(databank* db)
 {
     db->subscribeEvent([this](databank* db)
-    {
-    this->render(db);
+     {
+     this->render(db);
     });
 
-    texture = IMG_LoadTexture(db->getSDL_RENDERER(), ("mods/Main/textures/stone_wall_" + tPath + ".png").c_str());
+    texture = IMG_LoadTexture(db->getSDL_RENDERER(), "mods/Main/textures/sign.png");
 
     if (texture == NULL)
     {
-        std::cout << "img error " << SDL_GetError();
+        std::cout << "img error" << SDL_GetError();
         return -1;
     }
     return 0;
 }
 
-void wall::setPos(float xx, float xy)
+void sign::setPos(float xx, float xy)
 {
     x = xx;
     y = xy;
 }
 
-bool wall::getCollision(databank* db/*, player* pl*/)
+bool sign::getCollision(databank* db/*, player* pl*/)
 {
-    return true;
+    return false;
 }
 
-wall::position wall::getPos()
+sign::position sign::getPos()
 {
     position pos;
     pos.x = x;
@@ -58,7 +58,7 @@ wall::position wall::getPos()
     return pos;
 }
 
-wall::~wall()
+sign::~sign()
 {
     //dtor
 }

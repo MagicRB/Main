@@ -5,7 +5,7 @@ mainControls::mainControls()
     //ctor
 }
 
-bool mainControls::checkColl(databank* db, int dx, int dy)
+bool mainControls::checkColl(databank* db, float dx, float dy)
 {
     databank::position pos;
     pos.x = db->plx + dx;
@@ -13,7 +13,9 @@ bool mainControls::checkColl(databank* db, int dx, int dy)
 
     for (unsigned int i = 0; i < db->blp_v.size(); i++)
     {
-        if (db->blp_v.at(i).x == pos.x && db->blp_v.at(i).y == pos.y)
+        std::cout << db->blp_v.at(i).x << std::endl << db->blp_v.at(i).y << std::endl;
+        std::cout << pos.x << std::endl << pos.y << std::endl;
+        if (db->blp_v.at(i).x - dx == pos.x && db->blp_v.at(i).y - dy == pos.y)
         {
             return db->bl_v.at(i)->getCollision(db);
         }
@@ -26,34 +28,34 @@ void mainControls::eventHandle(databank* db)
     SDL_Event* e = db->getSDL_EVENT();
     if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_w)
     {
-        if (checkColl(db, 0, -1) == false)
+        if (checkColl(db, 0, -0.5) == false)
         {
-            db->setCY(db->getCY() - 1);
-            db->ply = db->ply - 1;
+            db->ply = db->ply - 0.25;
+            db->setCY(db->ply * db->getCHY());
         }
     }
     else if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_a)
     {
-        if (checkColl(db, -1, 0) == false)
+        if (checkColl(db, -0.5, 0) == false)
         {
-            db->setCX(db->getCX() - 1);
-            db->plx = db->plx - 1;
+            db->plx = db->plx - 0.25;
+            db->setCX(db->plx * db->getCHX());
         }
     }
     else if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_s)
     {
-        if (checkColl(db, 0, 1) == false)
+        if (checkColl(db, 0, 0.5) == false)
         {
-            db->setCY(db->getCY() + 1);
-            db->ply = db->ply + 1;
+            db->ply = db->ply + 0.25;
+            db->setCY(db->ply * db->getCHY());
         }
     }
     else if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_d)
     {
-        if (checkColl(db, 1, 0) == false)
+        if (checkColl(db, 0.5, 0) == false)
         {
-            db->setCX(db->getCX() + 1);
-            db->plx = db->plx + 1;
+            db->plx = db->plx + 0.25;
+            db->setCX(db->plx * db->getCHX());
         }
     }
     else if (e->type == SDL_KEYDOWN && e->key.keysym.sym == SDLK_q)

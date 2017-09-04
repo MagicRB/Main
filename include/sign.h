@@ -1,5 +1,5 @@
-#ifndef WALL_H
-#define WALL_H
+#ifndef SIGN_H
+#define SIGN_H
 
 #include <block.h>
 
@@ -10,11 +10,11 @@
 
 #include <databank.h>
 
-class wall : public block
+class sign : public block
 {
     public:
-        wall();
-        ~wall();
+        sign();
+        ~sign();
 
         virtual int render(databank* db);
         virtual int init(databank* db);
@@ -28,4 +28,4 @@ class wall : public block
     private:
 };
 
-#endif // WALL_H
+#endif // SIGN_H
